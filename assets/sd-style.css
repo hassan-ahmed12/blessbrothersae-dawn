@@ -9,6 +9,9 @@
   line-height: 44px;
   color: #EBEBEB;
 }
+.banner .banner__content .banner__heading {
+  letter-spacing: -1px;
+}
 /* HERO BANNER END*/
 
 /*====== SECTION STYLES EMD ======*/
