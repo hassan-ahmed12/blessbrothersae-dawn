@@ -72,6 +72,7 @@
                     class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
                   >
                     {{- block.settings.button_label | escape -}}
+                    {{ 'icon-arrow.svg' | inline_asset_content }}
                   </a>
                 {%- endif -%}
                 {%- if block.settings.button_label_2 != blank -%}
@@ -86,6 +87,12 @@
                     {{- block.settings.button_label_2 | escape -}}
                   </a>
                 {%- endif -%}
+              </div>
+            {%- when 'image' -%}
+              <div class="image_wrap">
+                {% if block.settings.image != blank %}
+                  {{ block.settings.image |  image_url: width: 1300 | image_tag: alt: block.settings.image.alt  }}
+                {% endif %}
               </div>
           {%- endcase -%}
         {%- endfor -%}
@@ -324,6 +331,18 @@
           "id": "button_style_secondary_2",
           "default": false,
           "label": "t:sections.rich-text.blocks.buttons.settings.button_style_secondary_2.label"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
         }
       ]
     }
