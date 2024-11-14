@@ -12,6 +12,9 @@
   line-height: 44px;
   color: #EBEBEB;
 }
+.banner .banner__content .banner__heading {
+  font-weight: bold;
+}
 .banner .banner__content .banner__buttons a {
   border-radius: 8px;
   padding: 16px 35px;
@@ -32,6 +35,9 @@
 /* HERO BANNER END*/
 
 /* RICHTEXT IMAGE SECTION */
+.rich-text.content-container .rich-text__heading {
+  font-weight: bold;
+}
 .rich-text.content-container .rich-text__text {
   margin-top: 5rem;
   font-size: 30px;
@@ -75,6 +81,35 @@
   }
 }
 /* RICHTEXT IMAGE SECTION END */
+
+/* COLLECTION LIST SECTION */
+.collection-list-wrapper ul.collection-list.grid--3-col-desktop {
+  gap: 3.5rem;
+  justify-content: space-between;
+
+  .collection-list__item {
+    width: 100%;
+    max-width: calc(33.33% - 2.4rem);
+
+    .card-wrapper  .card__inner {
+      border-radius: 50px;
+      overflow: hidden;
+    }
+    .card-wrapper .card__content {
+      text-align: center;
+
+      .card__heading {
+        font-size: 30px;
+        line-height: 38px;
+
+        .icon-wrap {
+          display: none;
+        }
+      }
+    }
+  }
+}
+/* COLLECTION LIST SECTION END */
 
 /*====== SECTION STYLES EMD ======*/
 
