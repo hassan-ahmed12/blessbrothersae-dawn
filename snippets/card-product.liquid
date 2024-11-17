@@ -40,7 +40,7 @@
       assign ratio = 1
     endif
   -%}
-  <div class="card-wrapper product-card-wrapper underline-links-hover">
+  <div class="card-wrapper product-card-wrapper ">
     <div
       class="
         card card--{{ settings.card_style }}
@@ -123,6 +123,7 @@
                 {{ card_product.title | escape }}
               </a>
             </h3>
+            <div class="prod_desc">{{ card_product.description | truncatewords: 16 }}</div>
           </div>
           <div class="card__badge {{ settings.badge_position }}">
             {%- if card_product.available == false -%}
@@ -160,6 +161,7 @@
               {{ card_product.title | escape }}
             </a>
           </h3>
+          <div class="prod_desc">{{ card_product.description | truncatewords: 16 }}</div>
           <div class="card-information">
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
@@ -576,7 +578,7 @@
       assign ratio = 0.8
     endif
   -%}
-  <div class="card-wrapper product-card-wrapper underline-links-hover">
+  <div class="card-wrapper product-card-wrapper">
     <div
       class="
         card card--{{ settings.card_style }}
@@ -610,6 +612,7 @@
               {{ 'onboarding.product_title' | t }}
             </a>
           </h3>
+          <div class="prod_desc">{{ card_product.description | truncatewords: 16 }}</div>
           <div class="card-information">
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>

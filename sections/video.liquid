@@ -45,11 +45,25 @@
         class="page-width"
       {% endif %}
     >
-      {%- unless section.settings.heading == blank -%}
+      
+      <div class="top_wrapper">
         <div class="title-wrapper title-wrapper--no-top-margin{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-          <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+          {%- unless section.settings.heading == blank -%}
+            <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+          {%- endunless -%}
+          {%- if section.settings.subtext != blank-%}
+            <div class="collection__description body rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+                {{ section.settings.subtext -}}
+            </div>
+          {%- endif -%}
         </div>
-      {%- endunless -%}
+        <div class="button-wrapper">
+          {% if section.settings.button_title != blank %}
+            <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_title }}{{ 'icon-arrow.svg' | inline_asset_content }}</a>
+          {% endif %}
+        </div>
+      </div>
+      
     </div>
     <deferred-media
       class="video-section__media deferred-media gradient global-media-settings{% if section.settings.full_width %} global-media-settings--full-width{% endif %}{% if fix_ratio %} media-fit-cover{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -111,7 +125,7 @@
               image_size: '1100x',
               autoplay: true,
               loop: section.settings.enable_video_looping,
-              controls: true,
+              controls: false,
               muted: false
           }}
         {%- endif -%}
@@ -162,6 +176,26 @@
       ],
       "default": "h1",
       "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "richtext",
+      "id": "subtext",
+      "label": "t:sections.featured-collection.settings.description.label"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_title",
+      "default": "View All",
+      "label": "Button Title"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
     },
     {
       "type": "checkbox",
