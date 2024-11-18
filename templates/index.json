@@ -268,35 +268,54 @@
         "video_FdjUqi": {
           "type": "video",
           "settings": {
+            "video": "shopify://files/videos/bless_brothers_1.mp4",
             "title": ""
           }
         },
-        "video_EbGzct": {
+        "video_WYeTeH": {
           "type": "video",
           "settings": {
+            "video": "shopify://files/videos/bless_brothers_1.mp4",
             "title": ""
           }
         },
-        "video_LY8wxe": {
+        "video_dbVA7F": {
           "type": "video",
           "settings": {
+            "video": "shopify://files/videos/bless_brothers_1.mp4",
             "title": ""
           }
         },
-        "video_qpBWmh": {
+        "video_RqaepJ": {
           "type": "video",
           "settings": {
+            "video": "shopify://files/videos/bless_brothers_1.mp4",
+            "title": ""
+          }
+        },
+        "video_8aziAb": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/bless_brothers_1.mp4",
+            "title": ""
+          }
+        },
+        "video_6MQGby": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/bless_brothers_1.mp4",
             "title": ""
           }
         }
       },
       "block_order": [
         "video_FdjUqi",
-        "video_EbGzct",
-        "video_LY8wxe",
-        "video_qpBWmh"
+        "video_WYeTeH",
+        "video_dbVA7F",
+        "video_RqaepJ",
+        "video_8aziAb",
+        "video_6MQGby"
       ],
-      "disabled": true,
       "settings": {
         "title": "We went behind the scenes and visited our customers!",
         "padding_top": 56,
