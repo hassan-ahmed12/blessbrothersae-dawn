@@ -12,7 +12,7 @@
   }
 {%- endstyle -%}
 
-<div class="video-carousel_section">
+<div class="video-carousel_section color-{{ section.settings.color_scheme }}">
     <div
       class="page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
       {% if settings.animations_reveal_on_scroll %}
@@ -29,13 +29,11 @@
         <div class="swiper-wrapper">
           {%- for block in section.blocks -%}
             {% assign video_id = block.settings.video.id %}
-            <div class="swiper-slide" id="video-slide-{{ forloop.index }}" {{ block.shopify_attributes }}>
+            <div class="video-slide swiper-slide" id="video-slide-{{ forloop.index }}" {{ block.shopify_attributes }}>
               <div id="video-wrapper-{{ video_id }}" class="video-wrapper">
-                {{ block.settings.video | video_tag: controls: true, autoplay: true, loop: true, muted: true, class: "video_slide", image_size: '700x' }}
+                {% comment %} {{ block.settings.video.sources[0].url }} {% endcomment %}
+                {{ block.settings.video | video_tag: controls: false, autoplay: true, loop: true, muted: true, class: "video_slide", image_size: '700x' }}
               </div>
-              {% if block.settings.title != blank %}
-                <span class="video_caption">{{ block.settings.title }}</span>
-              {% endif %}
             </div>
           {% endfor %}
         </div>
@@ -44,11 +42,7 @@
       </div>
       
     </div>
-  </div>
-
-<script>
-
-</script>
+</div>
 
 {% schema %}
 {
@@ -64,6 +58,13 @@
       "id": "title",
       "label": "Heading",
       "default": "Video Carousel"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-1"
     },
     {
       "type": "header",
@@ -101,11 +102,6 @@
           "type": "video",
           "id": "video",
           "label": "Select Video"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Text"
         }
       ]
     }

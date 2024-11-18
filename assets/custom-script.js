@@ -4,25 +4,19 @@ document.addEventListener('DOMContentLoaded', () => {
     spaceBetween: 10,
     draggable: true,
     loop: true,
+    slidesPerView: 1,
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
     breakpoints: {
-      600: {
-        slidesPerView: 1,
-      },
       750: {
         slidesPerView: 2,
         spaceBetween: 20,
       },
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-      },
       1200: {
-        slidesPerView: 4,
-        spaceBetween: 20,
+        slidesPerView: 3,
+        spaceBetween: 35,
       },
     },
   });
