@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     loop: true,
     slidesPerView: 1,
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+      nextEl: ".video_nav .button-next",
+      prevEl: ".video_nav .button-prev",
     },
     breakpoints: {
       750: {
