@@ -12,9 +12,9 @@
   }
 {%- endstyle -%}
 
-<div class="video-carousel_section color-{{ section.settings.color_scheme }}">
+<div class="video-carousel_section color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
     <div
-      class="page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      class="page-width isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
       {% if settings.animations_reveal_on_scroll %}
         data-cascade
       {% endif %}
@@ -42,7 +42,7 @@
         <div class="btn button-prev"></div>
         <div class="btn button-next"></div>
       </div>
-      
+      <div class="swiper-pagination"></div>
     </div>
 </div>
 

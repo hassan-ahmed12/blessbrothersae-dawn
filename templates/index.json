@@ -267,19 +267,27 @@
       "blocks": {
         "image_JeFXrR": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/2a7ca08ebe4ba242e4290003289093e7.jpg"
+          }
         },
         "image_iaxXNq": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/43443e34ef3d93fa443370a58a388ac6.jpg"
+          }
         },
         "image_Hj66VG": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/274c751e440c993f7a055e3ee70d14af.jpg"
+          }
         },
         "image_UT3PQX": {
           "type": "image",
-          "settings": {}
+          "settings": {
+            "image": "shopify://shop_images/9830abb179d9b6ac9bee282f62225362.jpg"
+          }
         }
       },
       "block_order": [
@@ -292,9 +300,12 @@
         "title": "Our Customer Gallery",
         "heading_size": "h0",
         "description": "<p>See for yourselves how stunning our furniture looks at our customers homes!</p>",
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "button_title": "View All",
+        "button_link": "",
+        "info_color": "#edeae1",
+        "color_scheme": "scheme-1",
+        "padding_top": 56,
+        "padding_bottom": 56
       }
     },
     "sd_video_carousel_kWx38f": {

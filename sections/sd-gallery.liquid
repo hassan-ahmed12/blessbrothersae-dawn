@@ -10,33 +10,43 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+  #SDGallery-{{ section.id }} .gallery_info {
+    background-color: {{ section.settings.info_color }};
+  }
 {%- endstyle -%}
 
 <div id="SDGallery-{{ section.id }}" class="sd-gallery color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" >
-  <div class="gallery_container page-width">
-    <div class="gallery_info">
-      <div class="title-wrapper title-wrapper--no-top-margin">
-        {%- if section.settings.title != blank -%}
-          <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-            {{ section.settings.title }}
-          </h2>
-        {%- endif -%}
-        {%- if section.settings.description != blank-%}
-          <div class="collection__description body rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-              {{ section.settings.description -}}
-          </div>
-        {%- endif -%}
-      </div>
-    </div>
-
-    <div class="gallery_wrapper">
-      {% for block in section.blocks %}
-        <div class="gallery-item" {{ block.shopify_attributes }}>
-          {% if block.settings.image != blank %}
-            {{ block.settings.image | image_url: width: 500 | image_tag: class: "gallery_image" }}
+  <div class="gallery_outer page-width">
+    <div class="gallery_inner">
+      <div class="gallery_info">
+        <div class="title-wrapper title-wrapper--no-top-margin">
+          {%- if section.settings.title != blank -%}
+            <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+              {{ section.settings.title }}
+            </h2>
+          {%- endif -%}
+          {%- if section.settings.description != blank-%}
+            <div class="collection__description body rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+                {{ section.settings.description -}}
+            </div>
+          {%- endif -%}
+          {% if section.settings.button_title != blank %}
+            <div class="button-wrapper">
+              <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_title }}{{ 'icon-arrow.svg' | inline_asset_content }}</a>
+              </div>
           {% endif %}
         </div>
-      {% endfor %}
+      </div>
+
+      <div class="gallery_wrapper">
+        {% for block in section.blocks %}
+          <div class="gallery-item" {{ block.shopify_attributes }}>
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 500 | image_tag: class: "gallery_image" }}
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
 
@@ -89,6 +99,31 @@
       "type": "richtext",
       "id": "description",
       "label": "t:sections.featured-collection.settings.description.label"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_title",
+      "default": "View All",
+      "label": "Button Title"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "info_color",
+      "label": "Content Background",
+      "default": "#fff"
+    },
+    {
+      "type": "header",
+      "content": "Section Color Scheme"
     },
     {
       "type": "color_scheme",

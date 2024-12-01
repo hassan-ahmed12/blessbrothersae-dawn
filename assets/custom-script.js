@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     draggable: true,
     loop: true,
     slidesPerView: 1,
+    pagination: {
+      el: ".swiper-pagination",
+    },
     navigation: {
       nextEl: ".video_nav .button-next",
       prevEl: ".video_nav .button-prev",
