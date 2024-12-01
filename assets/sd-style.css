@@ -287,7 +287,8 @@ body .collection__title.title-wrapper {
 
 
 /* FEATURED COLLECTION SECTION */
-.collection slider-component.page-width.slider-component-desktop {
+.collection slider-component.page-width.slider-component-desktop,
+.video-carousel_section .page-width {
   max-width: calc(var(--page-width) + 100px);
   padding: 0 70px;
 }
@@ -400,7 +401,7 @@ display: flex !important;
   background-position: center;
   cursor: pointer;
 }
-.swiper-nav .btn.button-prev {
+.swiper-nav .btn.button-next {
   transform: scale(-1);
 }
 /* VIDEO CAROUSEL SECTION END */

@@ -262,6 +262,41 @@
         "padding_bottom": 56
       }
     },
+    "sd_gallery_jt6HHx": {
+      "type": "sd-gallery",
+      "blocks": {
+        "image_JeFXrR": {
+          "type": "image",
+          "settings": {}
+        },
+        "image_iaxXNq": {
+          "type": "image",
+          "settings": {}
+        },
+        "image_Hj66VG": {
+          "type": "image",
+          "settings": {}
+        },
+        "image_UT3PQX": {
+          "type": "image",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "image_JeFXrR",
+        "image_iaxXNq",
+        "image_Hj66VG",
+        "image_UT3PQX"
+      ],
+      "settings": {
+        "title": "Our Customer Gallery",
+        "heading_size": "h0",
+        "description": "<p>See for yourselves how stunning our furniture looks at our customers homes!</p>",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "sd_video_carousel_kWx38f": {
       "type": "sd-video-carousel",
       "blocks": {
@@ -326,6 +361,7 @@
     "collection_list_8J36ey",
     "video_dp3HjK",
     "featured_collection_XitXXA",
+    "sd_gallery_jt6HHx",
     "sd_video_carousel_kWx38f"
   ]
 }
