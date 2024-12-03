@@ -1,10 +1,10 @@
 <footer class="custom-footer">
-  <div class="footer-top">
-    <!-- Left Column: Logo -->
-    <div class="footer-logo-section">
-      <a href="{{ routes.root_url }}" class="footer-logo-link">
+  <div class="footer-container">
+    <!-- Logo Section -->
+    <div class="footer-logo">
+      <a href="{{ routes.root_url }}">
         {%- if settings.logo != blank -%}
-          {{ settings.logo | image_url: width: 200 | image_tag: alt: shop.name, class: 'footer-logo' }}
+          {{ settings.logo | image_url: width: 150 | image_tag: alt: shop.name }}
         {%- else -%}
           <h2>{{ shop.name }}</h2>
         {%- endif -%}
@@ -12,8 +12,8 @@
     </div>
 
     <!-- Navigation Links -->
-    <div class="footer-nav-section">
-      <div class="footer-nav-column">
+    <div class="footer-links">
+      <div class="footer-column">
         <h4>About Us</h4>
         <ul>
           {% for link in linklists.about-menu.links %}
@@ -21,7 +21,7 @@
           {% endfor %}
         </ul>
       </div>
-      <div class="footer-nav-column">
+      <div class="footer-column">
         <h4>Furniture Sets</h4>
         <ul>
           {% for link in linklists.furniture-menu.links %}
@@ -29,29 +29,27 @@
           {% endfor %}
         </ul>
       </div>
-      <div class="footer-nav-column">
+      <div class="footer-column">
         <h4>Customer Service</h4>
         <ul>
           {% for link in linklists.service-menu.links %}
             <li><a href="{{ link.url }}">{{ link.title }}</a></li>
           {% endfor %}
         </ul>
-        <p class="contact-number">{{ settings.footer_contact_number }}</p>
+        <p>{{ settings.footer_contact_number }}</p>
       </div>
     </div>
 
     <!-- Join Section -->
-    <div class="footer-join-section">
+    <div class="footer-join">
       <h4>Join Bless Brothers</h4>
       <p>{{ settings.footer_join_text }}</p>
       <form method="post" action="/contact#contact_form">
         <input type="email" name="contact[email]" placeholder="Email Address" required>
         <button type="submit">Submit</button>
       </form>
-      <address>
-        {{ settings.footer_address }}
-      </address>
-      <div class="footer-social-icons">
+      <address>{{ settings.footer_address }}</address>
+      <div class="social-icons">
         <a href="{{ settings.tiktok_url }}" target="_blank"><i class="fab fa-tiktok"></i></a>
         <a href="{{ settings.facebook_url }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
         <a href="{{ settings.instagram_url }}" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -59,6 +57,7 @@
     </div>
   </div>
 
+  <!-- Footer Bottom -->
   <div class="footer-bottom">
     <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
     <ul>
@@ -72,127 +71,110 @@
 
 
 <style>
- /* Footer General Styles */
+ /* General Footer Styling */
 .custom-footer {
   background-color: #fff;
   font-family: 'Arial', sans-serif;
-  color: #333;
   padding: 40px 20px;
+  color: #333;
 }
 
-.footer-top {
+.footer-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 30px;
   gap: 20px;
 }
 
-.footer-logo-section {
-  flex: 1 1 200px;
-}
-
-.footer-logo {
+.footer-logo img {
   max-width: 150px;
-  display: block;
 }
 
-.footer-nav-section {
-  flex: 3 1 400px;
+.footer-links {
   display: flex;
-  justify-content: space-between;
+  gap: 30px;
+  flex: 2;
 }
 
-.footer-nav-column {
+.footer-column {
   flex: 1;
 }
 
-.footer-nav-column h4 {
+.footer-column h4 {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.footer-nav-column ul {
+.footer-column ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.footer-nav-column ul li {
+.footer-column ul li {
   margin-bottom: 5px;
 }
 
-.footer-nav-column ul li a {
+.footer-column ul li a {
   text-decoration: none;
   color: #333;
   font-size: 14px;
 }
 
-.footer-nav-column ul li a:hover {
+.footer-column ul li a:hover {
   color: #009688;
 }
 
-.contact-number {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #666;
+.footer-join {
+  flex: 1;
 }
 
-/* Join Section */
-.footer-join-section {
-  flex: 1 1 300px;
-}
-
-.footer-join-section h4 {
+.footer-join h4 {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.footer-join-section p {
+.footer-join p {
   font-size: 14px;
   margin-bottom: 15px;
 }
 
-.footer-join-section form {
+.footer-join form {
   display: flex;
   gap: 10px;
+  margin-bottom: 15px;
 }
 
-.footer-join-section input[type="email"] {
+.footer-join input[type="email"] {
   padding: 8px;
   flex: 1;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-.footer-join-section button {
+.footer-join button {
   padding: 8px 15px;
   background-color: #009688;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
 }
 
-.footer-join-section button:hover {
+.footer-join button:hover {
   background-color: #00796b;
 }
 
-.footer-social-icons {
-  margin-top: 15px;
-}
-
-.footer-social-icons a {
+.social-icons a {
+  font-size: 18px;
   margin-right: 10px;
-  font-size: 20px;
   color: #333;
   text-decoration: none;
 }
 
-.footer-social-icons a:hover {
+.social-icons a:hover {
   color: #009688;
 }
 
@@ -201,9 +183,9 @@
   border-top: 1px solid #ddd;
   padding-top: 20px;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .footer-bottom p {
@@ -214,22 +196,35 @@
 .footer-bottom ul {
   list-style: none;
   display: flex;
-  gap: 10px;
+  gap: 15px;
   padding: 0;
   margin: 0;
-}
-
-.footer-bottom ul li {
-  font-size: 14px;
 }
 
 .footer-bottom ul li a {
   text-decoration: none;
   color: #333;
+  font-size: 14px;
 }
 
 .footer-bottom ul li a:hover {
   color: #009688;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
   </style>
