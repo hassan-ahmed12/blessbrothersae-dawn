@@ -178,6 +178,13 @@
     "collection_list_8J36ey": {
       "type": "collection-list",
       "blocks": {
+        "featured_collection_xd3tTN": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": ""
+          }
+        },
         "featured_collection_d4cjbc": {
           "type": "featured_collection",
           "settings": {
@@ -198,10 +205,12 @@
         }
       },
       "block_order": [
+        "featured_collection_xd3tTN",
         "featured_collection_d4cjbc",
         "featured_collection_azn6nw",
         "featured_collection_YBHQ9d"
       ],
+      "disabled": true,
       "settings": {
         "title": "Explore Our Categories",
         "heading_size": "h0",
