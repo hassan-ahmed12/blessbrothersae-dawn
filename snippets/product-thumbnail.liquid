@@ -26,47 +26,60 @@
 </div>
 
 <style>
-  .product-gallery {
+ .vogue-product-gallery {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: "VogueFont", serif;
 }
 
-.main-image img {
+.vogue-main-image img {
   width: 100%;
   max-width: 600px;
   height: auto;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.thumbnail-slider {
+.vogue-thumbnail-slider {
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
+  justify-content: center;
   overflow-x: auto;
+  padding: 10px 0;
+  scroll-behavior: smooth;
 }
 
-.thumbnail {
+.vogue-thumbnail {
   cursor: pointer;
+  transition: transform 0.3s ease-in-out;
 }
 
-.thumbnail img {
-  width: 100px;
+.vogue-thumbnail:hover {
+  transform: scale(1.1);
+}
+
+.vogue-thumbnail img {
+  width: 80px;
   height: auto;
-  border: 1px solid transparent;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   transition: border-color 0.3s;
 }
 
-.thumbnail:hover img {
-  border-color: #000;
+.vogue-thumbnail img:hover {
+  border-color: #333;
 }
 
   </style>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-  const thumbnails = document.querySelectorAll(".thumbnail");
-  const mainImage = document.getElementById("main-product-image");
+  document.addEventListener("DOMContentLoaded", () => {
+  const thumbnails = document.querySelectorAll(".vogue-thumbnail");
+  const mainImage = document.getElementById("vogue-main-image");
 
   thumbnails.forEach((thumbnail) => {
     thumbnail.addEventListener("click", () => {
@@ -75,6 +88,7 @@
     });
   });
 });
+
 
   </script>
 
