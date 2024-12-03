@@ -28,9 +28,10 @@ body .title-wrapper {
 
 /* HERO BANNER */
 .banner .banner__content .banner__text {
-  font-size: 36px;
-  line-height: 44px;
-  color: #EBEBEB;
+    font-size: 35px;
+    line-height: 44px;
+    color: #fff;
+    font-weight: 400;
 }
 .banner .banner__content .banner__heading {
   font-weight: bold;
