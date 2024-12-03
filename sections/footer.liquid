@@ -1,33 +1,80 @@
 <footer class="custom-footer">
   <div class="footer-container">
-    <div class="footer-column">
-      <img src="{{ 'your-logo.png' | asset_url }}" alt="Logo" class="footer-logo">
-      <p>Your footer description goes here.</p>
+    <!-- Logo and About Section -->
+    <div class="footer-section">
+      <a href="{{ routes.root_url }}" class="footer-logo">
+        {%- if settings.logo != blank -%}
+          <div class="footer-logo-wrapper">
+            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+            {{ settings.logo | image_url: width: 300 | image_tag: alt: logo_alt, class: 'footer-logo-img' }}
+          </div>
+        {%- else -%}
+          <h2 class="footer-logo-text">{{ shop.name }}</h2>
+        {%- endif -%}
+      </a>
+      <p class="footer-description">
+        {{ settings.footer_about_text }}
+      </p>
     </div>
-    <div class="footer-column">
-      <h4>Quick Links</h4>
+
+    <!-- Navigation Links -->
+    <div class="footer-section">
+      <h3>About Us</h3>
       <ul>
-        <li><a href="/collections/all">Shop</a></li>
-        <li><a href="/pages/about-us">About Us</a></li>
-        <li><a href="/pages/contact">Contact</a></li>
+        {% for link in linklists.about-menu.links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
       </ul>
     </div>
-    <div class="footer-column">
-      <h4>Newsletter</h4>
+    <div class="footer-section">
+      <h3>Furniture Sets</h3>
+      <ul>
+        {% for link in linklists.furniture-menu.links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Customer Service</h3>
+      <ul>
+        {% for link in linklists.service-menu.links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+      <p class="contact-number">{{ settings.footer_contact_number }}</p>
+    </div>
+
+    <!-- Join Section -->
+    <div class="footer-section">
+      <h3>Join Bless Brothers</h3>
+      <p>{{ settings.footer_join_text }}</p>
       <form method="post" action="/contact#contact_form">
-        <input type="email" name="email" placeholder="Enter your email" required>
-        <button type="submit">Subscribe</button>
+        <input type="email" name="contact[email]" placeholder="Email Address" required>
+        <button type="submit">Submit</button>
       </form>
-    </div>
-    <div class="footer-column">
-      <h4>Follow Us</h4>
-      <ul class="social-links">
-        <li><a href="https://facebook.com">Facebook</a></li>
-        <li><a href="https://instagram.com">Instagram</a></li>
-      </ul>
+      <address>
+        {{ settings.footer_address }}
+      </address>
+      <div class="social-icons">
+        <a href="{{ settings.tiktok_url }}" target="_blank">TikTok</a>
+        <a href="{{ settings.facebook_url }}" target="_blank">Facebook</a>
+        <a href="{{ settings.instagram_url }}" target="_blank">Instagram</a>
+      </div>
     </div>
   </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="/terms-of-use">Terms of Use</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/cookie-policy">Cookie Policy</a></li>
+      <li><a href="/cookie-settings">Cookie Settings</a></li>
+    </ul>
+  </div>
 </footer>
+
 <style>
   .custom-footer {
   background-color: #f8f8f8; /* Adjust based on the image */
