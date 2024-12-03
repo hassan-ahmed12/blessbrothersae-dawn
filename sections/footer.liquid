@@ -1,48 +1,52 @@
 <footer class="custom-footer">
-  <div class="footer-top">
-    <!-- Left Column: Logo -->
-    <div class="footer-logo-section">
-      <a href="{{ routes.root_url }}" class="footer-logo-link">
+  <div class="footer-container">
+    <!-- Logo and About Section -->
+    <div class="footer-section">
+      <a href="{{ routes.root_url }}" class="footer-logo">
         {%- if settings.logo != blank -%}
-          {{ settings.logo | image_url: width: 200 | image_tag: alt: shop.name, class: 'footer-logo' }}
+          <div class="footer-logo-wrapper">
+            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+            {{ settings.logo | image_url: width: 300 | image_tag: alt: logo_alt, class: 'footer-logo-img' }}
+          </div>
         {%- else -%}
-          <h2>{{ shop.name }}</h2>
+          <h2 class="footer-logo-text">{{ shop.name }}</h2>
         {%- endif -%}
       </a>
+      <p class="footer-description">
+        {{ settings.footer_about_text }}
+      </p>
     </div>
 
     <!-- Navigation Links -->
-    <div class="footer-nav-section">
-      <div class="footer-nav-column">
-        <h4>About Us</h4>
-        <ul>
-          {% for link in linklists.about-menu.links %}
-            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="footer-nav-column">
-        <h4>Furniture Sets</h4>
-        <ul>
-          {% for link in linklists.furniture-menu.links %}
-            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="footer-nav-column">
-        <h4>Customer Service</h4>
-        <ul>
-          {% for link in linklists.service-menu.links %}
-            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-          {% endfor %}
-        </ul>
-        <p class="contact-number">{{ settings.footer_contact_number }}</p>
-      </div>
+    <div class="footer-section">
+      <h3>About Us</h3>
+      <ul>
+        {% for link in linklists.about-menu.links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Furniture Sets</h3>
+      <ul>
+        {% for link in linklists.furniture-menu.links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Customer Service</h3>
+      <ul>
+        {% for link in linklists.service-menu.links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+      <p class="contact-number">{{ settings.footer_contact_number }}</p>
     </div>
 
     <!-- Join Section -->
-    <div class="footer-join-section">
-      <h4>Join Bless Brothers</h4>
+    <div class="footer-section">
+      <h3>Join Bless Brothers</h3>
       <p>{{ settings.footer_join_text }}</p>
       <form method="post" action="/contact#contact_form">
         <input type="email" name="contact[email]" placeholder="Email Address" required>
@@ -51,17 +55,18 @@
       <address>
         {{ settings.footer_address }}
       </address>
-      <div class="footer-social-icons">
-        <a href="{{ settings.tiktok_url }}" target="_blank"><i class="fab fa-tiktok"></i></a>
-        <a href="{{ settings.facebook_url }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="{{ settings.instagram_url }}" target="_blank"><i class="fab fa-instagram"></i></a>
+      <div class="social-icons">
+        <a href="{{ settings.tiktok_url }}" target="_blank">TikTok</a>
+        <a href="{{ settings.facebook_url }}" target="_blank">Facebook</a>
+        <a href="{{ settings.instagram_url }}" target="_blank">Instagram</a>
       </div>
     </div>
   </div>
 
+  <!-- Footer Bottom -->
   <div class="footer-bottom">
     <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
-    <ul>
+    <ul class="footer-links">
       <li><a href="/terms-of-use">Terms of Use</a></li>
       <li><a href="/privacy-policy">Privacy Policy</a></li>
       <li><a href="/cookie-policy">Cookie Policy</a></li>
@@ -69,7 +74,6 @@
     </ul>
   </div>
 </footer>
-
 
 <style>
   /* Footer Container */
