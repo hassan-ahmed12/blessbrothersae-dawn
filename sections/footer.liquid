@@ -1,30 +1,63 @@
   <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <a href="/" class="logo">BLESS<br>BROTHERS</a>
+                  <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+            {%- if settings.logo != blank -%}
+              <div class="header__heading-logo-wrapper">
+                {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+                {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+                {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+                {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+                {{ settings.logo | image_url: width: 600 | image_tag:
+                  class: 'header__heading-logo motion-reduce',
+                  widths: widths,
+                  height: logo_height,
+                  width: settings.logo_width,
+                  alt: logo_alt,
+                  sizes: sizes,
+                  preload: true
+                }}
+              </div>
+            {%- else -%}
+              <span class="h2">{{ shop.name }}</span>
+            {%- endif -%}
+          </a>
+
             </div>
 
             <div class="footer-section">
                 <h3>About Us</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Our Story</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Storage</a></li>
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">Life at Bless Brothers</a></li>
-                    <li><a href="#">Giving Back</a></li>
-                    <li><a href="#">Sunsibility</a></li>
+                  {% for link in linklists.main-menu.links %}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+          {% if link.links.size > 0 %}
+            <ul class="dropdown">
+              {% for child in link.links %}
+                <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
                 </ul>
             </div>
 
             <div class="footer-section">
                 <h3>Furniture Sets</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Sofas</a></li>
-                    <li><a href="#">Table</a></li>
-                    <li><a href="#">Chairs</a></li>
-                    <li><a href="#">Bed & Mattress</a></li>
-                    <li><a href="#">Storage</a></li>
+                    {% for link in linklists.main-menu.links %}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+          {% if link.links.size > 0 %}
+            <ul class="dropdown">
+              {% for child in link.links %}
+                <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
                 </ul>
 
                 <h3>Customer Service</h3>
