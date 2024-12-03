@@ -11,151 +11,223 @@
   <link rel="stylesheet" href="{{ 'component-mega-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
 
-<header class="shopify-header">
-  <!-- Top bar (optional) -->
+<header class="custom-header">
+  <!-- Top Bar -->
   <div class="top-bar">
-    <p>{{ 'Welcome to' | append: ' ' | append: shop.name }}</p>
-    <div class="top-links">
-      <a href="/account">My Account</a>
-      <a href="/cart">Cart ({{ cart.item_count }})</a>
+    <div class="container">
+      <!-- Logo -->
+      <div class="logo">
+        <a href="/">
+          <h1>Bless <span>Brothers</span></h1>
+        </a>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <form action="/search" method="get">
+          <input type="text" name="q" placeholder="What are you looking for?" />
+          <button type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85zm-5.27.978a5.5 5.5 0 1 1 7.778-7.778 5.5 5.5 0 0 1-7.778 7.778z"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- User Links -->
+      <div class="user-links">
+        {% if customer %}
+          <a href="/account">{{ customer.first_name }}</a>
+          <a href="/account/logout">Log Out</a>
+        {% else %}
+          <a href="/account/login">Sign In</a>
+          <a href="/account/register">Sign Up</a>
+        {% endif %}
+        <a href="/wishlist"><i class="fas fa-heart"></i></a>
+        <a href="/cart">
+          <i class="fas fa-shopping-cart"></i>
+          {% if cart.item_count > 0 %}
+            <span class="cart-count">{{ cart.item_count }}</span>
+          {% endif %}
+        </a>
+      </div>
     </div>
   </div>
 
-  <!-- Main Header Section -->
-  <div class="header-main">
-    <!-- Logo -->
-    <div class="logo">
-      <a href="/">
-        <img src="{{ settings.logo | default: 'logo-placeholder.png' }}" alt="{{ shop.name }}">
-      </a>
-    </div>
-
-    <!-- Navigation Menu -->
-    <nav class="main-menu">
-      <ul>
-        {% for link in linklists.main-menu.links %}
-          <li>
-            <a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </nav>
-
-    <!-- Search Bar -->
-    <div class="search-bar">
-      <form action="/search" method="get">
-        <input type="text" name="q" placeholder="Search products...">
-        <button type="submit">Search</button>
-      </form>
-    </div>
-
-    <!-- Cart and Other Icons -->
-    <div class="header-icons">
-      <a href="/account" class="icon-account">Account</a>
-      <a href="/cart" class="icon-cart">Cart ({{ cart.item_count }})</a>
-    </div>
-  </div>
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <ul class="container">
+      {% for link in linklists.main-menu.links %}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+          {% if link.links.size > 0 %}
+            <ul class="dropdown">
+              {% for child in link.links %}
+                <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
 </header>
+
 <style>
-  /* General Header Styling */
-.shopify-header {
+  /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
   font-family: 'Arial', sans-serif;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styling */
+.custom-header {
+  border-bottom: 1px solid #e0e0e0;
 }
 
 /* Top Bar */
 .top-bar {
   display: flex;
-  justify-content: space-between;
-  padding: 5px 15px;
-  font-size: 14px;
-  background: #f7f7f7;
-}
-
-.top-bar p {
-  margin: 0;
-  color: #333;
-}
-
-.top-bar .top-links a {
-  color: #007bff;
-  margin-left: 10px;
-}
-
-/* Main Header */
-.header-main {
-  display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 15px;
+  padding: 15px 0;
+  background-color: #fff;
 }
 
-/* Logo Section */
-.logo img {
-  max-height: 50px;
-}
-
-/* Navigation Menu */
-.main-menu ul {
-  list-style: none;
+.top-bar .container {
+  width: 90%;
+  margin: 0 auto;
   display: flex;
-  gap: 20px;
-  padding: 0;
-  margin: 0;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.main-menu ul li a {
-  text-decoration: none;
-  color: #333;
+.logo h1 {
+  font-size: 24px;
+  color: #005f5f;
+}
+.logo span {
   font-weight: bold;
+  color: #000;
 }
 
-/* Search Bar */
 .search-bar {
+  flex: 1;
+  margin: 0 20px;
+}
+.search-bar form {
   display: flex;
 }
-
 .search-bar input {
-  padding: 5px;
-  border: 1px solid #ddd;
-  border-radius: 5px 0 0 5px;
-  width: 200px;
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
 }
-
 .search-bar button {
-  padding: 5px 10px;
-  border: 1px solid #ddd;
-  border-left: none;
-  border-radius: 0 5px 5px 0;
-  background: #007bff;
+  background-color: #005f5f;
   color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 0 4px 4px 0;
   cursor: pointer;
 }
 
-/* Header Icons */
-.header-icons a {
-  text-decoration: none;
+.user-links a {
   margin-left: 15px;
   color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  position: relative;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .header-main {
+.user-links .cart-count {
+  background-color: #f00;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  right: -10px;
+}
+
+/* Navigation Bar */
+.nav-bar {
+  background-color: #f9f9f9;
+  padding: 10px 0;
+}
+.nav-bar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+.nav-bar li {
+  margin: 0 15px;
+  position: relative;
+}
+.nav-bar a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+.nav-bar a:hover {
+  color: #005f5f;
+}
+.nav-bar .dropdown {
+  display: none;
+  position: absolute;
+  background: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  top: 100%;
+  left: 0;
+  padding: 10px 0;
+}
+.nav-bar li:hover .dropdown {
+  display: block;
+}
+.nav-bar .dropdown li {
+  padding: 5px 10px;
+}
+.nav-bar .dropdown li a {
+  color: #555;
+}
+.nav-bar .dropdown li a:hover {
+  color: #005f5f;
+}
+/* Mobile View */
+@media (max-width: 768px) {
+  .top-bar {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .main-menu ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .search-bar input {
+  .search-bar {
+    margin: 10px 0;
     width: 100%;
   }
+
+  .user-links {
+    margin-top: 10px;
+  }
+
+  .nav-bar ul {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 10px;
+  }
+
+  .nav-bar li {
+    margin: 5px 10px;
+  }
 }
+
 
   </style>
 <style>
