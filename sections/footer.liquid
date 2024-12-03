@@ -27,24 +27,36 @@
             <div class="footer-section">
                 <h3>About Us</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Our Story</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Storage</a></li>
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">Life at Bless Brothers</a></li>
-                    <li><a href="#">Giving Back</a></li>
-                    <li><a href="#">Sunsibility</a></li>
+                      {% for link in linklists.main-menu.links %}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+          {% if link.links.size > 0 %}
+            <ul class="dropdown">
+              {% for child in link.links %}
+                <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
                 </ul>
             </div>
 
             <div class="footer-section">
                 <h3>Furniture Sets</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Sofas</a></li>
-                    <li><a href="#">Table</a></li>
-                    <li><a href="#">Chairs</a></li>
-                    <li><a href="#">Bed & Mattress</a></li>
-                    <li><a href="#">Storage</a></li>
+                    {% for link in linklists.main-menu.links %}
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+          {% if link.links.size > 0 %}
+            <ul class="dropdown">
+              {% for child in link.links %}
+                <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
                 </ul>
 
                 <h3>Customer Service</h3>
