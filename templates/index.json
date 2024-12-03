@@ -215,25 +215,6 @@
         "padding_bottom": 56
       }
     },
-    "video_dp3HjK": {
-      "type": "video",
-      "settings": {
-        "heading": "Explore Our Pet Friendly Furniture",
-        "heading_size": "h0",
-        "subtext": "<p>Our Scratch Resistant Furniture is proven to work and is made in Beligum!</p>",
-        "button_title": "View All",
-        "button_link": "",
-        "enable_video_looping": true,
-        "video": "shopify://files/videos/163846542-woman-petting-cat-sofa-living-_H264HD1080.mov",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "cover_image": "shopify://shop_images/video-banner.jpg",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "",
-        "padding_top": 56,
-        "padding_bottom": 56
-      }
-    },
     "featured_collection_XitXXA": {
       "type": "featured-collection",
       "settings": {
@@ -258,6 +239,25 @@
         "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "video_dp3HjK": {
+      "type": "video",
+      "settings": {
+        "heading": "Explore Our Pet Friendly Furniture",
+        "heading_size": "h0",
+        "subtext": "<p>Our Scratch Resistant Furniture is proven to work and is made in Beligum!</p>",
+        "button_title": "View All",
+        "button_link": "",
+        "enable_video_looping": true,
+        "video": "shopify://files/videos/163846542-woman-petting-cat-sofa-living-_H264HD1080.mov",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "cover_image": "shopify://shop_images/video-banner.jpg",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "",
         "padding_top": 56,
         "padding_bottom": 56
       }
@@ -370,8 +370,8 @@
     "sd_products_grid_WpH649",
     "sd_infoboxes_qpt86d",
     "collection_list_8J36ey",
-    "video_dp3HjK",
     "featured_collection_XitXXA",
+    "video_dp3HjK",
     "sd_gallery_jt6HHx",
     "sd_video_carousel_kWx38f"
   ]
