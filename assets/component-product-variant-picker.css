@@ -1,6 +1,54 @@
 variant-selects {
   display: block;
 }
+.vogue-product-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: "VogueFont", serif;
+}
+
+.vogue-main-image img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.vogue-thumbnail-slider {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 10px 0;
+  scroll-behavior: smooth;
+}
+
+.vogue-thumbnail {
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.vogue-thumbnail:hover {
+  transform: scale(1.1);
+}
+
+.vogue-thumbnail img {
+  width: 80px;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+.vogue-thumbnail img:hover {
+  border-color: #333;
+}
 
 .product--no-media .product-form__input--pill,
 .product--no-media .product-form__input--swatch,
