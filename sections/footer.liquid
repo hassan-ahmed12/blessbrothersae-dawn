@@ -1,106 +1,224 @@
-<footer class="custom-footer">
-  <div class="footer-container">
-    <!-- Logo and About Section -->
-    <div class="footer-section">
-      <a href="{{ routes.root_url }}" class="footer-logo">
-        {%- if settings.logo != blank -%}
-          <div class="footer-logo-wrapper">
-            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-            {{ settings.logo | image_url: width: 300 | image_tag: alt: logo_alt, class: 'footer-logo-img' }}
-          </div>
-        {%- else -%}
-          <h2 class="footer-logo-text">{{ shop.name }}</h2>
-        {%- endif -%}
-      </a>
-      <p class="footer-description">
-        {{ settings.footer_about_text }}
-      </p>
-    </div>
+  <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <a href="/" class="logo">BLESS<br>BROTHERS</a>
+            </div>
 
-    <!-- Navigation Links -->
-    <div class="footer-section">
-      <h3>About Us</h3>
-      <ul>
-        {% for link in linklists.about-menu.links %}
-          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h3>Furniture Sets</h3>
-      <ul>
-        {% for link in linklists.furniture-menu.links %}
-          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h3>Customer Service</h3>
-      <ul>
-        {% for link in linklists.service-menu.links %}
-          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-        {% endfor %}
-      </ul>
-      <p class="contact-number">{{ settings.footer_contact_number }}</p>
-    </div>
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Storage</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Life at Bless Brothers</a></li>
+                    <li><a href="#">Giving Back</a></li>
+                    <li><a href="#">Sunsibility</a></li>
+                </ul>
+            </div>
 
-    <!-- Join Section -->
-    <div class="footer-section">
-      <h3>Join Bless Brothers</h3>
-      <p>{{ settings.footer_join_text }}</p>
-      <form method="post" action="/contact#contact_form">
-        <input type="email" name="contact[email]" placeholder="Email Address" required>
-        <button type="submit">Submit</button>
-      </form>
-      <address>
-        {{ settings.footer_address }}
-      </address>
-      <div class="social-icons">
-        <a href="{{ settings.tiktok_url }}" target="_blank">TikTok</a>
-        <a href="{{ settings.facebook_url }}" target="_blank">Facebook</a>
-        <a href="{{ settings.instagram_url }}" target="_blank">Instagram</a>
-      </div>
+            <div class="footer-section">
+                <h3>Furniture Sets</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Sofas</a></li>
+                    <li><a href="#">Table</a></li>
+                    <li><a href="#">Chairs</a></li>
+                    <li><a href="#">Bed & Mattress</a></li>
+                    <li><a href="#">Storage</a></li>
+                </ul>
+
+                <h3>Customer Service</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Our Servesides</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">+971 528531750</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section join-section">
+                <h2>Join Bless Brothers</h2>
+                <p>Get exclusive offers, inspiration, and lots more to help bring your ideas to life.</p>
+                
+                <form class="subscribe-form">
+                    <input type="email" placeholder="Email Address" required>
+                    <button type="submit">Submit</button>
+                </form>
+
+                <div class="address">
+                    Goshi Warehouses City<br>
+                    Warehouse 28 - 22nd St - Al Quoz<br>
+                    Al Quoz Industrial Area 3 - Dubai
+                </div>
+
+                <div class="social-icons">
+                    <a href="#" aria-label="TikTok">TT</a>
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="Instagram">IG</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="bottom-bar">
+        <div>© Copyright 2024 Bless Brothers. All rights reserved.</div>
+        <div class="bottom-bar-links">
+            <a href="#">Terms of Use</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cookie Policy</a>
+            <a href="#">Cookie Settings</a>
+        </div>
     </div>
-  </div>
-
-  <!-- Footer Bottom -->
-  <div class="footer-bottom">
-    <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
-    <ul class="footer-links">
-      <li><a href="/terms-of-use">Terms of Use</a></li>
-      <li><a href="/privacy-policy">Privacy Policy</a></li>
-      <li><a href="/cookie-policy">Cookie Policy</a></li>
-      <li><a href="/cookie-settings">Cookie Settings</a></li>
-    </ul>
-  </div>
-</footer>
-
 <style>
-  .custom-footer {
-  background-color: #f8f8f8; /* Adjust based on the image */
-  padding: 20px;
-  color: #333;
-}
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
+        .footer {
+            background: white;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-.footer-column {
-  width: 25%; /* Adjust for columns */
-  padding: 10px;
-}
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
 
-.footer-logo {
-  max-width: 150px; /* Adjust based on your logo size */
-}
+        .logo {
+            color: #008080;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
 
-.social-links li {
-  list-style: none;
-  display: inline-block;
-  margin-right: 10px;
-}
+        .footer-section h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
 
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: #008080;
+        }
+
+        .join-section h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .join-section p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .subscribe-form input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+        }
+
+        .subscribe-form button {
+            background: #008080;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            cursor: pointer;
+        }
+
+        .address {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            width: 30px;
+            height: 30px;
+            background: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        .bottom-bar {
+            background: #000;
+            color: white;
+            padding: 15px 20px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bottom-bar-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .bottom-bar a {
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .subscribe-form {
+                flex-direction: column;
+            }
+
+            .bottom-bar {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .bottom-bar-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
   </style>
