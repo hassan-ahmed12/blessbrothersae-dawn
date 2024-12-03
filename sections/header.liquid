@@ -11,6 +11,51 @@
   <link rel="stylesheet" href="{{ 'component-mega-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
 
+<header class="shopify-header">
+  <!-- Top bar (optional) -->
+  <div class="top-bar">
+    <p>{{ 'Welcome to' | append: ' ' | append: shop.name }}</p>
+    <div class="top-links">
+      <a href="/account">My Account</a>
+      <a href="/cart">Cart ({{ cart.item_count }})</a>
+    </div>
+  </div>
+
+  <!-- Main Header Section -->
+  <div class="header-main">
+    <!-- Logo -->
+    <div class="logo">
+      <a href="/">
+        <img src="{{ settings.logo | default: 'logo-placeholder.png' }}" alt="{{ shop.name }}">
+      </a>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="main-menu">
+      <ul>
+        {% for link in linklists.main-menu.links %}
+          <li>
+            <a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+      <form action="/search" method="get">
+        <input type="text" name="q" placeholder="Search products...">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+
+    <!-- Cart and Other Icons -->
+    <div class="header-icons">
+      <a href="/account" class="icon-account">Account</a>
+      <a href="/cart" class="icon-cart">Cart ({{ cart.item_count }})</a>
+    </div>
+  </div>
+</header>
 
 <style>
   header-drawer {
