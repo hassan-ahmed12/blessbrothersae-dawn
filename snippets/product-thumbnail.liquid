@@ -1,27 +1,110 @@
-
-<div class="vogue-product-gallery">
-  <!-- Main Image Display -->
-  <div class="vogue-main-image">
-    <img
-      src="{{ product.featured_image | img_url: '1024x1024' }}"
-      alt="{{ product.title }}"
-      id="vogue-main-image"
-    />
+<div class="product-images-container">
+  <!-- Left Column: Thumbnails -->
+  <div class="thumbnails">
+    {% for media in product.media %}
+      <button
+        class="thumbnail-item"
+        data-media-id="{{ media.id }}"
+        onclick="updateMainImage('{{ media | image_url: 'large' }}', '{{ media.id }}')"
+        aria-label="Thumbnail for {{ media.alt | escape }}"
+      >
+        <img 
+          src="{{ media | image_url: 'compact' }}" 
+          alt="{{ media.alt | escape }}" 
+          loading="lazy" 
+        />
+      </button>
+    {% endfor %}
   </div>
 
-  <!-- Thumbnail Slider -->
-  <div class="vogue-thumbnail-slider">
-    {% for media in product.media %}
-      {% if media.media_type == 'image' %}
-        <div class="vogue-thumbnail" data-image="{{ media.src | img_url: '1024x1024' }}">
-          <img
-            src="{{ media.preview_image.src | img_url: '200x200' }}"
-            alt="{{ media.alt }}"
-            class="vogue-thumbnail-image"
-          />
-        </div>
-      {% endif %}
-    {% endfor %}
+  <!-- Right Column: Main Image -->
+  <div class="main-image-container">
+    <img 
+      id="main-image" 
+      src="{{ product.media.first | image_url: 'large' }}" 
+      alt="{{ product.media.first.alt | escape }}" 
+      class="main-image"
+    />
   </div>
 </div>
 
+<!-- Modal for Zoom -->
+<div id="image-modal" class="image-modal">
+  <span class="close-modal" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modal-image" />
+</div>
+
+<style>
+/* Layout styling */
+.product-images-container {
+  display: flex;
+  gap: 1rem;
+}
+.thumbnails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.thumbnail-item {
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0.2rem;
+}
+.thumbnail-item img {
+  width: 100%;
+  border-radius: 0.3rem;
+  transition: border-color 0.3s;
+}
+.thumbnail-item:hover {
+  border-color: #000;
+}
+.main-image-container {
+  flex: 3;
+}
+.main-image {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+.image-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+}
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+}
+</style>
+
+<script>
+function updateMainImage(imageUrl, mediaId) {
+  document.getElementById('main-image').src = imageUrl;
+  document.getElementById('main-image').alt = "Media " + mediaId;
+}
+
+function closeModal() {
+  document.getElementById('image-modal').style.display = 'none';
+}
+document.getElementById('main-image').addEventListener('click', function () {
+  const modal = document.getElementById('image-modal');
+  const modalImg = document.getElementById('modal-image');
+  modalImg.src = this.src;
+  modal.style.display = 'flex';
+});
+</script>
