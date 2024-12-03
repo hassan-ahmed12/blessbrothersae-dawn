@@ -1,52 +1,48 @@
 <footer class="custom-footer">
-  <div class="footer-container">
-    <!-- Logo and About Section -->
-    <div class="footer-section">
-      <a href="{{ routes.root_url }}" class="footer-logo">
+  <div class="footer-top">
+    <!-- Left Column: Logo -->
+    <div class="footer-logo-section">
+      <a href="{{ routes.root_url }}" class="footer-logo-link">
         {%- if settings.logo != blank -%}
-          <div class="footer-logo-wrapper">
-            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-            {{ settings.logo | image_url: width: 300 | image_tag: alt: logo_alt, class: 'footer-logo-img' }}
-          </div>
+          {{ settings.logo | image_url: width: 200 | image_tag: alt: shop.name, class: 'footer-logo' }}
         {%- else -%}
-          <h2 class="footer-logo-text">{{ shop.name }}</h2>
+          <h2>{{ shop.name }}</h2>
         {%- endif -%}
       </a>
-      <p class="footer-description">
-        {{ settings.footer_about_text }}
-      </p>
     </div>
 
     <!-- Navigation Links -->
-    <div class="footer-section">
-      <h3>About Us</h3>
-      <ul>
-        {% for link in linklists.about-menu.links %}
-          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h3>Furniture Sets</h3>
-      <ul>
-        {% for link in linklists.furniture-menu.links %}
-          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h3>Customer Service</h3>
-      <ul>
-        {% for link in linklists.service-menu.links %}
-          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-        {% endfor %}
-      </ul>
-      <p class="contact-number">{{ settings.footer_contact_number }}</p>
+    <div class="footer-nav-section">
+      <div class="footer-nav-column">
+        <h4>About Us</h4>
+        <ul>
+          {% for link in linklists.about-menu.links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="footer-nav-column">
+        <h4>Furniture Sets</h4>
+        <ul>
+          {% for link in linklists.furniture-menu.links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="footer-nav-column">
+        <h4>Customer Service</h4>
+        <ul>
+          {% for link in linklists.service-menu.links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
+        <p class="contact-number">{{ settings.footer_contact_number }}</p>
+      </div>
     </div>
 
     <!-- Join Section -->
-    <div class="footer-section">
-      <h3>Join Bless Brothers</h3>
+    <div class="footer-join-section">
+      <h4>Join Bless Brothers</h4>
       <p>{{ settings.footer_join_text }}</p>
       <form method="post" action="/contact#contact_form">
         <input type="email" name="contact[email]" placeholder="Email Address" required>
@@ -55,18 +51,17 @@
       <address>
         {{ settings.footer_address }}
       </address>
-      <div class="social-icons">
-        <a href="{{ settings.tiktok_url }}" target="_blank">TikTok</a>
-        <a href="{{ settings.facebook_url }}" target="_blank">Facebook</a>
-        <a href="{{ settings.instagram_url }}" target="_blank">Instagram</a>
+      <div class="footer-social-icons">
+        <a href="{{ settings.tiktok_url }}" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="{{ settings.facebook_url }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="{{ settings.instagram_url }}" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
   </div>
 
-  <!-- Footer Bottom -->
   <div class="footer-bottom">
     <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
-    <ul class="footer-links">
+    <ul>
       <li><a href="/terms-of-use">Terms of Use</a></li>
       <li><a href="/privacy-policy">Privacy Policy</a></li>
       <li><a href="/cookie-policy">Cookie Policy</a></li>
@@ -75,137 +70,166 @@
   </div>
 </footer>
 
+
 <style>
-  /* Footer Container */
+ /* Footer General Styles */
 .custom-footer {
-  background-color: #f8f8f8;
-  padding: 40px 20px;
-  font-family: Arial, sans-serif;
+  background-color: #fff;
+  font-family: 'Arial', sans-serif;
   color: #333;
+  padding: 40px 20px;
 }
 
-.footer-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 30px;
   gap: 20px;
-  margin-bottom: 20px;
 }
 
-/* Logo and About Section */
+.footer-logo-section {
+  flex: 1 1 200px;
+}
+
 .footer-logo {
-  text-decoration: none;
+  max-width: 150px;
+  display: block;
 }
 
-.footer-logo-img {
-  max-width: 100%;
-  height: auto;
+.footer-nav-section {
+  flex: 3 1 400px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.footer-description {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #666;
+.footer-nav-column {
+  flex: 1;
 }
 
-/* Footer Sections */
-.footer-section h3 {
+.footer-nav-column h4 {
   font-size: 16px;
+  font-weight: bold;
   margin-bottom: 10px;
 }
 
-.footer-section ul {
+.footer-nav-column ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.footer-section ul li {
+.footer-nav-column ul li {
   margin-bottom: 5px;
 }
 
-.footer-section ul li a {
+.footer-nav-column ul li a {
   text-decoration: none;
   color: #333;
-  transition: color 0.3s;
+  font-size: 14px;
 }
 
-.footer-section ul li a:hover {
-  color: #ff0000;
+.footer-nav-column ul li a:hover {
+  color: #009688;
+}
+
+.contact-number {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
 }
 
 /* Join Section */
-.footer-section form {
-  display: flex;
-  gap: 10px;
+.footer-join-section {
+  flex: 1 1 300px;
+}
+
+.footer-join-section h4 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-join-section p {
+  font-size: 14px;
   margin-bottom: 15px;
 }
 
-.footer-section input[type="email"] {
+.footer-join-section form {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-join-section input[type="email"] {
   padding: 8px;
   flex: 1;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
-.footer-section button {
+.footer-join-section button {
   padding: 8px 15px;
   background-color: #009688;
-  color: #fff;
+  color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background 0.3s;
+  font-size: 14px;
 }
 
-.footer-section button:hover {
+.footer-join-section button:hover {
   background-color: #00796b;
 }
 
-.footer-section address {
-  font-style: normal;
-  font-size: 14px;
-  color: #666;
-  margin-top: 10px;
+.footer-social-icons {
+  margin-top: 15px;
 }
 
-.social-icons a {
+.footer-social-icons a {
   margin-right: 10px;
-  text-decoration: none;
+  font-size: 20px;
   color: #333;
-  transition: color 0.3s;
+  text-decoration: none;
 }
 
-.social-icons a:hover {
-  color: #ff0000;
+.footer-social-icons a:hover {
+  color: #009688;
 }
 
 /* Footer Bottom */
 .footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-top: 1px solid #ddd;
   padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
   font-size: 14px;
   color: #666;
 }
 
-.footer-links {
+.footer-bottom ul {
   list-style: none;
   display: flex;
   gap: 10px;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
-.footer-links li a {
+.footer-bottom ul li {
+  font-size: 14px;
+}
+
+.footer-bottom ul li a {
   text-decoration: none;
   color: #333;
-  transition: color 0.3s;
 }
 
-.footer-links li a:hover {
-  color: #ff0000;
+.footer-bottom ul li a:hover {
+  color: #009688;
 }
 
   </style>
