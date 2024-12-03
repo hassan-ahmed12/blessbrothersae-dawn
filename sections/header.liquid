@@ -82,7 +82,7 @@
 
   <!-- Navigation Bar -->
   <nav class="nav-bar">
-    <ul class="container">
+    <ul class="container bordering">
       {% for link in linklists.main-menu.links %}
         <li>
           <a href="{{ link.url }}">{{ link.title }}</a>
@@ -114,7 +114,14 @@ body {
 .custom-header {
   border-bottom: 1px solid #e0e0e0;
 }
+.bordering{
+      border-top: 1px solid #ccc;
+    /* display: flex
+; */
+    /* justify-content: center; */
+    padding-top: 10px;
 
+}
 /* Top Bar */
 .top-bar {
   display: flex;
